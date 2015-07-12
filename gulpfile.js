@@ -1,10 +1,10 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
-var istanbul = require('gulp-istanbul');
+var gulp = require('gulp'),
+    jshint = require('gulp-jshint'),
+    mocha = require('gulp-mocha'),
+    istanbul = require('gulp-istanbul');
 
 gulp.task('lint', function() {
-  return gulp.src('./routes/*.js', 'lib/*.js')
+  return gulp.src(['./routes/**/*.js', 'lib/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'));
 });
