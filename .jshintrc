@@ -1,8 +1,8 @@
 {
-    // JSHint Default Configuration File (as on JSHint website)
+    //J SHint Default Configuration File (as on JSHint website)
     // See http://jshint.com/docs/ for more details
 
-    "maxerr"        : 50,       // {int} Maximum error before stopping
+    "maxerr"        : 100,       // {int} Maximum error before stopping
 
     // Enforcing
     "bitwise"       : true,     // true: Prohibit bitwise operators (&, |, ^, etc.)
@@ -20,7 +20,7 @@
     "nonbsp"        : true,     // true: Prohibit "non-breaking whitespace" characters.
     "nonew"         : false,    // true: Prohibit use of constructors for side-effects (without assignment)
     "plusplus"      : false,    // true: Prohibit use of `++` & `--`
-    "quotmark"      : false,    // Quotation mark consistency:
+    "quotmark"      : "single",    // Quotation mark consistency:
                                 //   false    : do nothing (default)
                                 //   true     : ensure whatever is used is consistent
                                 //   "single" : require single quotes
@@ -35,7 +35,7 @@
     "maxdepth"      : false,    // {int} Max depth of nested blocks (within functions)
     "maxstatements" : false,    // {int} Max number statements per function
     "maxcomplexity" : false,    // {int} Max cyclomatic complexity per function
-    "maxlen"        : false,    // {int} Max number of characters per line
+    "maxlen"        : 120,    // {int} Max number of characters per line
     "varstmt"       : false,    // true: Disallow any var statements. Only `let` and `const` are allowed.
 
     // Relaxing

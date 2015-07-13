@@ -1,5 +1,8 @@
+'use strict';
+
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
+    eslint = require('gulp-eslint'),
     mocha = require('gulp-mocha'),
     istanbul = require('gulp-istanbul');
 
@@ -7,6 +10,14 @@ gulp.task('lint', function() {
   return gulp.src(['./routes/**/*.js', 'lib/**/*.js'])
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('lint2', function() {
+  return gulp.src(['./routes/**/*.js', 'lib/**/*.js'])
+  .pipe(eslint())
+      //.pipe(eslint.format('checkstyle', process.stderr))
+      .pipe(eslint.format())
+      .pipe(eslint.failOnError());
 });
 
 gulp.task('test', function() {
@@ -32,9 +43,20 @@ gulp.task('cover', function(cb) {
           dir: 'test-assets/coverage',
           reporters: ['lcov', 'cobertura', 'clover', 'text-summary'],
         }))
-        .pipe(istanbul.enforceThresholds({ thresholds: { global: 90 } })) // Enforce a coverage of at least 90%
+        .pipe(istanbul.enforceThresholds({
+          thresholds: {
+            global: 90
+          }
+        })) // Enforce a coverage of at least 90%
         .on('end', cb);
     });
 });
 
-gulp.task('default', ['lint'], function() {});
+gulp.task('watch', function(){
+  var watcher = gulp.watch('**/*.js', ['lint']);
+  watcher.on('change', function(event) {
+    console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+  });
+});
+
+gulp.task('default', ['lint', 'test'], function() {});

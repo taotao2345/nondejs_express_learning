@@ -1,3 +1,5 @@
+'use strict';
+
 var request = require('supertest'),
     app = require('../../app'),
     req = request(app);
@@ -11,7 +13,7 @@ describe('GET /index', function() {
         var res = ret.res,
             statusCode = res.statusCode;
 
-        statusCode.should.equal(500);
+        statusCode.should.equal(200);
         done();
       });
     });
