@@ -14,10 +14,10 @@ gulp.task('lint', function() {
 
 gulp.task('lint2', function() {
   return gulp.src(['./routes/**/*.js', 'lib/**/*.js'])
-  .pipe(eslint())
-      //.pipe(eslint.format('checkstyle', process.stderr))
-      .pipe(eslint.format())
-      .pipe(eslint.failOnError());
+    .pipe(eslint('.eslintrc'))
+    //.pipe(eslint.format('checkstyle', process.stderr))
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
 
 gulp.task('test', function() {
