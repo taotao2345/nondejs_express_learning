@@ -13,7 +13,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('lint2', function() {
-  return gulp.src(['./routes/**/*.js', 'lib/**/*.js'])
+  return gulp.src(['gulpfile.js', './routes/**/*.js', 'lib/**/*.js'])
     .pipe(eslint('.eslintrc'))
     //.pipe(eslint.format('checkstyle', process.stderr))
     .pipe(eslint.format())
@@ -41,7 +41,7 @@ gulp.task('cover', function(cb) {
         }))
         .pipe(istanbul.writeReports({
           dir: 'test-assets/coverage',
-          reporters: ['lcov', 'cobertura', 'clover', 'text-summary'],
+          reporters: ['lcov', 'cobertura', 'clover', 'text-summary']
         }))
         .pipe(istanbul.enforceThresholds({
           thresholds: {
@@ -52,7 +52,7 @@ gulp.task('cover', function(cb) {
     });
 });
 
-gulp.task('watch', function(){
+gulp.task('watch', function() {
   var watcher = gulp.watch('**/*.js', ['lint']);
   watcher.on('change', function(event) {
     console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
